@@ -37,16 +37,19 @@ while count < 11:
         print("不正解") 
         count += 1
         continue
-        ans2 = input("一つ目")
-        if ans2 == b:
-            print("正解")
-            break
-        else:
-            print("不正解。もう一回。")
-
-        ans3 = input("二つ目")
-        if ans3 == c:
-            print("正解")
-            break
-        else:
-            print("不正解。もう一回。")
+count = 0
+while count < 11:
+    ans2 = input("一つ目")
+    if ans2 == b:
+        print("正解")
+        break
+    else:
+        print("不正解。もう一回。")
+count = 0
+while count < 11:
+    ans3 = input("二つ目")
+    if ans3 == c:
+        print("正解")
+        break
+    else:
+        print("不正解。もう一回。")
