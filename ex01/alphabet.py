@@ -20,6 +20,7 @@ b = a[0]
 c = a[1]
 
 
+
 result = list(set(taisyou) - set(a))
 
 print("表示文字:", end = "")
