@@ -3,6 +3,10 @@ import random
 tai = 7
 kes = 2
 
+
+
+
+
 zennbu = [
     "A","B","C","D","E","F","G","H","I","J","K","L","M",\
     "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
@@ -18,6 +22,9 @@ print("")
 a = (random.sample(taisyou, kes))
 b = a[0]
 c = a[1]
+
+
+
 
 
 
@@ -40,7 +47,7 @@ while count < 11:
         continue
 count = 0
 while count < 11:
-    ans2 = input("一つ目")
+    ans2 = input("一つ目は？")
     if ans2 == b:
         print("正解")
         break
@@ -48,7 +55,7 @@ while count < 11:
         print("不正解。もう一回。")
 count = 0
 while count < 11:
-    ans3 = input("二つ目")
+    ans3 = input("二つ目は？")
     if ans3 == c:
         print("正解")
         break
