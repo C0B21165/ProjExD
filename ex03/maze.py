@@ -1,6 +1,11 @@
 import tkinter as tk
 from turtle import title
 
+def key_down(event):
+    global key
+    
+
+
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("迷えるこうかとん")#1
@@ -13,7 +18,7 @@ if __name__ == "__main__":
     cx, cy = 300, 400
     canv.create_image(cx, cy, image=tori, tag = "tori")
 
-
+    key = ""#4
 
 
 
