@@ -1,5 +1,4 @@
 import tkinter as tk
-from turtle import title
 
 def key_down(event):#5
     global key
@@ -9,7 +8,7 @@ def key_up(event):#6
     global key
     key = ""
 
-def main_proc(event):#7
+def main_proc():#7
     global cx, cy
     if key == "Up":
         cy -= 20
@@ -37,8 +36,9 @@ if __name__ == "__main__":
 
     key = ""#4
 
-    root.bind("<KeyPress", key_down)
+    root.bind("<KeyPress>", key_down)
     root.bind("<KeyRelease>", key_up)
     
+    main_proc()
 
     root.mainloop()
