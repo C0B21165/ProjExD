@@ -1,9 +1,26 @@
 import tkinter as tk
 from turtle import title
 
-def key_down(event):
+def key_down(event):#5
     global key
-    
+    key = event.keysym
+
+def key_up(event):#6
+    global key
+    key = ""
+
+def main_proc(event):#7
+    global cx, cy
+    if key == "Up":
+        cy -= 20
+    if key == "Down":
+        cy += 20
+    if key == "Left":
+        cx -= 20
+    if key == "Right":
+        cx += 20
+    canv.coords("tori", cx, cy)
+    root.after(100, main_proc)
 
 
 if __name__ == "__main__":
@@ -20,6 +37,8 @@ if __name__ == "__main__":
 
     key = ""#4
 
-
+    root.bind("<KeyPress", key_down)
+    root.bind("<KeyRelease>", key_up)
+    
 
     root.mainloop()
