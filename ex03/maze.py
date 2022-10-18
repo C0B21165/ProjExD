@@ -9,9 +9,12 @@ if __name__ == "__main__":
     canv.pack()
     
 
-    tori = tk.PhotoImage(file="fig/9.png")
+    tori = tk.PhotoImage(file="fig/fig/9.png")#3
     cx, cy = 300, 400
     canv.create_image(cx, cy, image=tori, tag = "tori")
+
+
+
 
 
     root.mainloop()
