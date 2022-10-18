@@ -1,5 +1,7 @@
 import tkinter as tk
 import maze_maker as mm#8
+import tkinter.messagebox as tkm
+
 
 def key_down(event):#5
     global key
@@ -20,6 +22,11 @@ def main_proc():#7
         mx -= 1
     if key == "Right":
         mx += 1
+    if key == "R":#追加1(リセットボタン)
+        tori = tk.PhotoImage(file="fig/fig/6.png")#3
+        mx, my = 1, 1
+        cx, cy, = mx*100+50, my*100+50
+        canv.create_image(cx, cy, image=tori, tag = "tori")
         
     if maze_lst[my][mx] ==0:
         cx, cy = mx*100+50, my*100+50
@@ -34,6 +41,12 @@ def main_proc():#7
             mx -= 1
     canv.coords("tori", cx, cy)
     root.after(100, main_proc)
+    if key == "2":#追加2(速度上昇)
+        #tkm.showinfo("もう一回だけ押してみてね！もっと速くなるよ！")
+        root.after(75, main_proc)
+        
+        
+
 
 
 if __name__ == "__main__":
@@ -50,6 +63,7 @@ if __name__ == "__main__":
     
 
     tori = tk.PhotoImage(file="fig/fig/9.png")#3
+
     mx, my = 1, 1
     cx, cy, = mx*100+50, my*100+50
     
