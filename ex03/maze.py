@@ -15,7 +15,7 @@ def main_proc():#7
     if key == "Up":
         my -= 1
     if key == "Down":
-        my += 1
+        my += 1 
     if key == "Left":
         mx -= 1
     if key == "Right":
