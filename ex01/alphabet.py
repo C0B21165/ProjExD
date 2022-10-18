@@ -3,10 +3,6 @@ import random
 tai = 7
 kes = 2
 
-
-
-
-
 zennbu = [
     "A","B","C","D","E","F","G","H","I","J","K","L","M",\
     "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
@@ -23,6 +19,8 @@ a = (random.sample(taisyou, kes))
 b = a[0]
 c = a[1]
 
+print(b)
+print(c)
 
 
 
@@ -36,7 +34,7 @@ for j in result:
 
 print("")
 count = 0
-while count < 11:
+while count < 10:
     ans1 = int(input("欠損した文字数は？"))
     if ans1 == kes:
         print("正解です！では欠損文字は何でしょうか？一文字ずつ答えてください。")
@@ -44,18 +42,25 @@ while count < 11:
     else:
         print("不正解") 
         count += 1
-        continue
+
+       
+
+x = 0
 count = 0
-while count < 11:
-    ans2 = input("一つ目は？")
+while count < 10:
+    ans2 = input("1つ目は？")
     if ans2 == b:
         print("正解")
         break
+        if ans2 == b:
+            x = c
+        elif ans2 == c:
+            x = b
     else:
         print("不正解。もう一回。")
 count = 0
-while count < 11:
-    ans3 = input("二つ目は？")
+while count < 10:
+    ans3 = input("2つ目は？")
     if ans3 == c:
         print("正解")
         break
