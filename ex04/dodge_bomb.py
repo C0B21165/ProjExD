@@ -1,6 +1,7 @@
 import pygame as pg
 import sys
 from random import randint
+#追加2
 import tkinter as tk
 import tkinter.messagebox as tkm
 
@@ -95,7 +96,7 @@ def main():
         scrn_sfc.blit(bomb_sfc, bomb_rct) #5
 
         if tori_rct.colliderect(bomb_rct):
-            return
+            return tkm.showwarning("爆発", "ゲームオーバー！")#追加2
 
         #追加1
         yoko, tate = check_bound(bomb_rct2, scrn_rct)
@@ -104,8 +105,10 @@ def main():
         bomb_rct2.move_ip(vx2, vy2) #6
         scrn_sfc.blit(bomb_sfc2, bomb_rct2) #5
 
+        #追加3
         if tori_rct.colliderect(bomb_rct2):
-            return tkm.showwarning("爆発", "ゲームオーバー！")
+            tori_sfc = pg.image.load("fig/5.png")
+            tori_sfc = pg.transform.rotozoom(tori_sfc, 0, 2.0)
 
         pg.display.update() #2
         clock.tick(1000)
