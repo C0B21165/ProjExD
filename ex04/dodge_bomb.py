@@ -1,16 +1,27 @@
 import pygame as pg
+import sys
+from random import randint
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん")#連取1
     scrn_sfc = pg.display.set_mode((1600, 900))
-    bg_sfc = pg.image.load("fig/fig/pg_bg.jpg")
+    scrn_rct = scrn_sfc.get_rect()
+    bg_sfc = pg.image.load("fig/pg_bg.jpg")
     bg_rct = bg_sfc.get_rect()
 
     #3
-    tori_sfc = pg.image.load("fig/fig/7.jpg")
+    tori_sfc = pg.image.load("fig/7.jpg")
     tori_sfc = pg.transform.rotozoom(tori_sfc, 0, 2.0)
     tori_rct = tori_sfc.get_rect()
     tori_rct.center = 900, 400
+
+    #5
+    bomb_sfc = pg.Surface((20, 20))
+    bomb_sfc.set_colorkey((0, 0, 0))
+    pg.draw.circle(bomb_sfc, (255, 0, 0), (10, 10), 10)
+    bomb_rct = bomb_sfc.get_rect()
+    bomb_rct.centerx = randint(0, scrn_rct.width)
+    bomb_rct.centery = randint(0, scrn_rct.height)
 
     clock = pg.time.Clock()
 
@@ -26,10 +37,12 @@ def main():
         if key_status[pg.K_UP]:    tori_rct.centery -= 1
         if key_status[pg.K_DOWN]:  tori_rct.centery += 1
         if key_status[pg.K_LEFT]:  tori_rct.centerx -= 1
-        if key_status[K_RIGHT]:    tori_rct.centerx += 1
-
-        #3
+        if key_status[pg.K_RIGHT]: tori_rct.centerx += 1
         scrn_sfc.blit(tori_sfc, tori_rct)
+
+        
+        #3
+        scrn_sfc.blit(bomb_sfc, bomb_rct)
         pg.display.update()
         
         clock.tick(1000)
