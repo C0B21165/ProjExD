@@ -1,6 +1,8 @@
 import pygame as pg
 import sys
 from random import randint
+import tkinter as tk
+import tkinter.messagebox as tkm
 
 key_delta = {
     pg.K_UP:    [0, -1],
@@ -21,6 +23,7 @@ def check_bound(obj_rct, scr_rct):
     if obj_rct.top < scr_rct.top or scr_rct.bottom < obj_rct.bottom: 
         tate = -1
     return yoko, tate
+
 
 
 def main():
@@ -50,12 +53,12 @@ def main():
     #追加1
     bomb_sfc2 = pg.Surface((20, 20))
     bomb_sfc2.set_colorkey((0, 0, 0))
-    pg.draw.circle(bomb_sfc2, (255, 0, 0), (10, 10), 10)
+    pg.draw.circle(bomb_sfc2, (255, 128, 0), (10, 10), 10)
     bomb_rct2 = bomb_sfc.get_rect()
     bomb_rct2.centerx = randint(0, scrn_rct.width)
     bomb_rct2.centery = randint(0, scrn_rct.height)
     #6
-    vx, vy = +1, +1
+    vx2, vy2 = +1, +1
 
 
     clock = pg.time.Clock() #1
@@ -96,13 +99,13 @@ def main():
 
         #追加1
         yoko, tate = check_bound(bomb_rct2, scrn_rct)
-        vx *= yoko
-        vy *= tate
-        bomb_rct2.move_ip(vx, vy) #6
+        vx2 *= yoko
+        vy2 *= tate
+        bomb_rct2.move_ip(vx2, vy2) #6
         scrn_sfc.blit(bomb_sfc2, bomb_rct2) #5
 
         if tori_rct.colliderect(bomb_rct2):
-            return
+            return tkm.showwarning("爆発", "ゲームオーバー！")
 
         pg.display.update() #2
         clock.tick(1000)
