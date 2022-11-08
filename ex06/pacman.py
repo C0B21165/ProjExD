@@ -11,20 +11,20 @@ def main():
     scrn_sfc = pg.display.set_mode((SCR_WIDTH, SCR_HEIGHT))
     pg.display.set_caption("PACMAN")
     (x, y) = (0, 400)
-    sfc1 = pg.image.load("pngwing.com.png").convert_alpha()
+    sfc1 = pg.image.load("pngwing.com.png").convert_alpha()# 画像を設定
     rct1 = sfc1.get_rect()
     sfc1 = pg.transform.rotozoom(sfc1,0,0.07)
     
 
-    enemy1 = pg.image.load("pngwing.com2.png").convert_alpha()#敵1
+    enemy1 = pg.image.load("pngwing.com2.png").convert_alpha()#敵1　画像を設定
     enemy_rect1 = enemy1.get_rect()
-    enemy1 = pg.transform.rotozoom(enemy1,0,0.07)
+    enemy1 = pg.transform.rotozoom(enemy1,0,0.07)#画像を縮小
     vx = vy = 7
     clock = pg.time.Clock()
 
-    enemy2 = pg.image.load("pngwing.com3.png").convert_alpha()#敵2
+    enemy2 = pg.image.load("pngwing.com3.png").convert_alpha()#敵2　画像を設定
     enemy_rect2 = enemy2.get_rect()
-    enemy2 = pg.transform.rotozoom(enemy2,0,0.13)
+    enemy2 = pg.transform.rotozoom(enemy2,0,0.13)#画像を縮小
 
     vx2 = vy2 = 7
     clock = pg.time.Clock()
@@ -33,9 +33,9 @@ def main():
         #敵1
         clock.tick(60)
         enemy_rect1.move_ip(vx, vy)
-        if enemy_rect1.left < 0 or enemy_rect1.right > SCR_WIDTH+800:
+        if enemy_rect1.left < 0 or enemy_rect1.right > SCR_WIDTH+800:#敵が自動で跳ね返る
             vx = -vx
-        if enemy_rect1.top < 0 or enemy_rect1.bottom > SCR_HEIGHT:
+        if enemy_rect1.top < 0 or enemy_rect1.bottom > SCR_HEIGHT:#敵が自動で跳ね返る
             vy = -vy
         pg.display.update()
         pg.time.wait(40)
@@ -43,15 +43,15 @@ def main():
         #敵2
         clock.tick(60)
         enemy_rect2.move_ip(vx2, vy2)
-        if enemy_rect2.left < 0 or enemy_rect2.right > SCR_WIDTH:
+        if enemy_rect2.left < 0 or enemy_rect2.right > SCR_WIDTH:#敵が自動で跳ね返る
             vx2 = -vx2
-        if enemy_rect2.top < 0 or enemy_rect2.bottom > SCR_HEIGHT+500
+        if enemy_rect2.top < 0 or enemy_rect2.bottom > SCR_HEIGHT+500:#敵が自動で跳ね返る
             vy2 = -vy2
         pg.display.update()
         pg.time.wait(40)
 
 
-        scrn_sfc.fill((255, 255, 255))
+        scrn_sfc.fill((255, 255, 255))#色を設定
         scrn_sfc.blit(sfc1, (x, y))
         scrn_sfc.blit(enemy1, enemy_rect1)#敵1
 
@@ -60,7 +60,7 @@ def main():
 
 
         for event in pg.event.get():
-            if event.type == KEYDOWN:
+            if event.type == KEYDOWN:#それぞれのキーで移動を設定
                 if event.key == K_a:
                     x -= 50
                     y += 0
@@ -87,7 +87,7 @@ def main():
                     sys.exit()
 
         #for event in pg.event.get():
-        #    if event.type == MOUSEMOTION:
+        #    if event.type == MOUSEMOTION:　　　　コメントを解除すると、マウスカーソルでパックマンを動かせる。
         #       x, y = event.pos
         #        x -= int(sfc1.get_width()/2)
         #        y -= int(sfc1.get_height()/2)
